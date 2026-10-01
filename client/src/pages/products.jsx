@@ -50,7 +50,7 @@ function Products({ setCart }) {
                             <h1
     className="text-3xl tracking-tight text-gray-900 sm:text-4xl font-extrabold"
 >
-Explore Our Prodcuts
+Explore Our Products
 </h1>
 
                             <p className="mt-3 text-gray-500">
