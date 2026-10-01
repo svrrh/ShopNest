@@ -24,38 +24,50 @@ function Checkout({ cart, setCart }) {
     return sum + item.price * item.quantity;
   }, 0);
 
-  // Create order after simulated successful payment
-  const handlePaymentSuccess = async () => {
+
+// Create order after simulated successful payment
+const handlePaymentSuccess = async () => {
     try {
-      setLoading(true);
-      setError("");
+        setLoading(true);
+        setError("");
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-        items: cart.map((item) => ({
-            productId: item._id,
-            quantity: item.quantity,
-        })),
-    }),
-});
+        const token = localStorage.getItem("token");
 
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to create order");
-      }
+        if (!token) {
+            throw new Error("Token not found. Please login again.");
+        }
 
-      setPaymentStatus("success");
-      setCart([]);
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/orders`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    items: cart.map((item) => ({
+                        productId: item._id,
+                        quantity: item.quantity,
+                    })),
+                }),
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to create order");
+        }
+
+        setPaymentStatus("success");
+        setCart([]);
     } catch (error) {
-      setError(error.message);
+        setError(error.message);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
   // Payment success screen
   if (paymentStatus === "success") {
