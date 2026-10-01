@@ -116,7 +116,7 @@ function ProductDetails({ setCart }) {
                 <div className="grid overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm md:grid-cols-2">
 
                     {/* Product Image */}
-                    <div className="flex min-h-350px items-center justify-center bg-gray-50 p-8 sm:p-12">
+                    <div className="flex min-h-[350px] items-center justify-center bg-gray-50 p-8 sm:p-12">
                         <img
                             src={product.image}
                             alt={product.name}
