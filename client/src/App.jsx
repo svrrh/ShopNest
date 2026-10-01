@@ -1,12 +1,11 @@
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Products from "./pages/products";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/cart";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Checkout from "./pages/Checkout";
-import MyOrders from "./pages/MyOrders";
 
 function App() {
  const [cart, setCart] = useState(() => {
