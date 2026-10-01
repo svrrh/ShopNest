@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Products from "./pages/products";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/cart";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
  const [cart, setCart] = useState(() => {
