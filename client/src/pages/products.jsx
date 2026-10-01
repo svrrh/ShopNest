@@ -15,9 +15,8 @@ function Products({ setCart }) {
                 setError("");
 
                 const response = await fetch(
-                    "http://localhost:4000/api/products"
-                );
-
+    `${import.meta.env.VITE_API_URL}/api/products`
+);
                 if (!response.ok) {
                     throw new Error("Failed to load products.");
                 }

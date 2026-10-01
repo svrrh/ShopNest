@@ -12,12 +12,12 @@ function ProductDetails({ setCart }) {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                setLoading(true);
-                setError("");
+    setLoading(true);
+    setError("");
 
-                const response = await fetch(
-                    `http://localhost:4000/api/products/${id}`
-                );
+    const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/products/${id}`
+    );
 
                 if (!response.ok) {
                     throw new Error(

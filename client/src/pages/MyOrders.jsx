@@ -13,14 +13,13 @@ function MyOrders() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          "http://localhost:4000/api/orders/my-orders",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
+  `${import.meta.env.VITE_API_URL}/api/orders/my-orders`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
         const data = await response.json();
 
         if (!response.ok) {

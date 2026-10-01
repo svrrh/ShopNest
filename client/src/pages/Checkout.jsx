@@ -30,23 +30,19 @@ function Checkout({ cart, setCart }) {
       setLoading(true);
       setError("");
 
-      const token = localStorage.getItem("token");
-
-      const response = await fetch("http://localhost:4000/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          items: cart.map((item) => ({
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+        items: cart.map((item) => ({
             productId: item._id,
             quantity: item.quantity,
-          })),
-        }),
-      });
-
-      const data = await response.json();
+        })),
+    }),
+});
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to create order");
